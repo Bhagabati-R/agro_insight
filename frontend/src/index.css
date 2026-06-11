@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes scanLine {
+  0%   { top: 0%; }
+  100% { top: 100%; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.6); }
+  50%       { box-shadow: 0 0 0 12px rgba(74,222,128,0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.scan-line {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #4ade80 30%, #86efac 50%, #4ade80 70%, transparent 100%);
+  animation: scanLine 1.6s ease-in-out infinite;
+  z-index: 20;
+  filter: drop-shadow(0 0 6px #4ade80);
+}
+
+.animate-fadeInUp  { animation: fadeInUp 0.5s ease forwards; }
+.animate-float     { animation: float 3s ease-in-out infinite; }
+.animate-pulse-green { animation: pulse-green 2s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 3s linear infinite; }
+
+.shimmer-btn {
+  background: linear-gradient(90deg, #16a34a, #4ade80, #22c55e, #16a34a);
+  background-size: 300% auto;
+  animation: shimmer 2.5s linear infinite;
+}
+
+.glass {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.glass-card {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.8);
+}
+
+.scan-corner {
+  position: absolute;
+  width: 22px; height: 22px;
+  border-color: #4ade80;
+  border-style: solid;
+}
+.scan-corner-tl { top: 8px;    left: 8px;  border-width: 3px 0 0 3px; }
+.scan-corner-tr { top: 8px;    right: 8px; border-width: 3px 3px 0 0; }
+.scan-corner-bl { bottom: 8px; left: 8px;  border-width: 0 0 3px 3px; }
+.scan-corner-br { bottom: 8px; right: 8px; border-width: 0 3px 3px 0; }
+
+.farm-bg {
+  min-height: 100vh;
+  background:
+    linear-gradient(135deg, rgba(2,44,20,0.85) 0%, rgba(15,70,35,0.80) 50%, rgba(2,44,20,0.88) 100%),
+    url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=85&auto=format&fit=crop')
+    center/cover fixed;
+}
