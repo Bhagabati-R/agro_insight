@@ -31,16 +31,14 @@ async function connectDB() {
   console.log('MongoDB connected');
 }
 
-// For local development
-if (process.env.NODE_ENV !== 'production') {
-  connectDB().then(() => {
-    app.listen(process.env.PORT || 5000, () =>
-      console.log(`Server on port ${process.env.PORT || 5000}`)
-    );
-  }).catch(console.error);
-} else {
-  // For Vercel serverless — connect on each cold start
-  connectDB().catch(console.error);
-}
+const PORT = process.env.PORT || 5000;
+
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server on port ${PORT}`);
+    });
+  })
+  .catch(console.error);
 
 module.exports = app;
