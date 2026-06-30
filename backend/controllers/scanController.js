@@ -12,7 +12,7 @@ async function scanCrop(req, res) {
     const { processedBuffer, mimeType, meta } = await processImage(req.file.buffer);
 
     // ── Step 2: Gemini Vision — identify crop + health ────────────
-    const model = genAI.getGenerativeModel({ model:  "models/gemini-2.0-flash" });
+    const model = genAI.getGenerativeModel({ model:  "models/gemini-1.5-flash-001" });
 
     const imagePart = {
       inlineData: {
