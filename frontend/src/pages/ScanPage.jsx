@@ -57,9 +57,19 @@ export default function ScanPage() {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setResult(data);
-    } catch (err) {
-      setError(err.response?.data?.error || 'Scan failed. Try a clearer image.');
-    } finally {
+    // } catch (err) {
+    //   setError(err.response?.data?.error || 'Scan failed. Try a clearer image.');
+    // } 
+      } catch (err) {
+  const msg = err.response?.data?.error;
+
+  setError(
+    typeof msg === 'object'
+      ? JSON.stringify(msg)
+      : (msg || 'Scan failed. Try a clearer image.')
+  );
+}
+    finally {
       stopStepCycle();
       setLoading(false);
     }
