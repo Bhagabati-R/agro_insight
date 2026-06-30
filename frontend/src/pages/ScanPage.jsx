@@ -52,7 +52,8 @@ export default function ScanPage() {
     try {
       const form = new FormData();
       form.append('image', file);
-      const { data } = await axios.post('/api/identify', form, {
+      // const { data } = await axios.post('/api/identify', form, {
+      const { data } = await axios.post('/api/scan', form, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setResult(data);
